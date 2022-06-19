@@ -1,7 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoggingService } from 'src/app/shared/logging.service';
 import { Person } from '../../model/person';
 import { PersonService } from '../../shared/person.service';
 
@@ -15,7 +14,6 @@ export class PersonListComponent implements OnInit {
   selected:Person = null;
 
   constructor(
-    private logger:LoggingService, 
     private service:PersonService,
     private router:Router) { }
 
@@ -27,7 +25,6 @@ export class PersonListComponent implements OnInit {
   }
   
   onSelect(obj:Person) {
-    this.logger.debug("User selected a Person");
     this.selected = obj;
   }
 
@@ -39,18 +36,15 @@ export class PersonListComponent implements OnInit {
     if (!this.isSelected())
       return;
     
-    this.logger.debug("User wants to delete a Person");
     this.service.remove(this.selected);
     this.selected = null;
   }
 
   onEdit() {
-    this.logger.debug("User wants to edit a Person");
     this.router.navigate(['/person', this.selected.id]);
   }
 
   onAdd() {
-    this.logger.debug("User wants to add a Person");
     this.router.navigate(['/person/0']);
   }
 }

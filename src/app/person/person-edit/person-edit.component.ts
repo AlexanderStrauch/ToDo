@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from 'src/app/model/person';
-import { LoggingService } from 'src/app/shared/logging.service';
 import { PersonService } from 'src/app/shared/person.service';
 
 @Component({
@@ -11,12 +10,11 @@ import { PersonService } from 'src/app/shared/person.service';
   styleUrls: ['./person-edit.component.css']
 })
 export class PersonEditComponent implements OnInit {
-  id:string = "";
+  id:number = null;
   obj:Person = null;
   form:FormGroup;
 
   constructor(
-    private logger:LoggingService, 
     private route:ActivatedRoute,
     private router:Router,
     private service:PersonService) { 
@@ -30,10 +28,10 @@ export class PersonEditComponent implements OnInit {
   async ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     
-    if (this.id != "0") {
+    if (this.id != null) {
       this.obj = await this.service.get(this.id);
     } else {
-      this.obj = new Person("", "", "", "");
+      this.obj = new Person(null, "", "", "");
     }
 
     this.form.setValue({
@@ -45,7 +43,6 @@ export class PersonEditComponent implements OnInit {
 
   onSubmit() {
     if (this.form.invalid) {
-      this.logger.debug("Validation shows invalid data!");
       return;
     }
 

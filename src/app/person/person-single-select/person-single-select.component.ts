@@ -49,7 +49,8 @@ export class PersonSingleSelectComponent implements OnInit, ControlValueAccessor
     return this.selected != null && obj.id == this.selected.id;
   }
 
-  onSelectChanged(id:string) {
+  onSelectChanged(event:Event) {
+    let id = Number((event.target as HTMLInputElement).value)
     let index = this.all.findIndex(x => x.id == id);
     this.selected = this.all[index];
     this.onChanged(this.selected);

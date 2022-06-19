@@ -26,7 +26,7 @@
   <tbody>
     <tr *ngFor="let project of objects; index as i" 
         (click)="onSelect(project)"
-        (dblclick)="onEdit(project)"
+        (dblclick)="onEdit()"
         [class.table-info]="project == selected">
         <th scope="row">{{i + 1}}</th>
         <td>{{project.title}}</td>

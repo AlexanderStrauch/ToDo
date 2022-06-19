@@ -5,6 +5,7 @@ import { PersonEditComponent } from './person/person-edit/person-edit.component'
 import { PersonListComponent } from './person/person-list/person-list.component';
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
+
 const routes: Routes = [
   { path: 'person', component: PersonListComponent },
   { path: 'person/:id', component: PersonEditComponent },

@@ -49,7 +49,8 @@ export class ProjectingleSelectComponent implements OnInit, ControlValueAccessor
     return this.selected != null && obj.id == this.selected.id;
   }
 
-  onSelectChanged(id:number) {
+  onSelectChanged(event:Event) {
+    let id = Number((event.target as HTMLInputElement).value)
     let index = this.all.findIndex(x => x.id == id);
     this.selected = this.all[index];
     this.onChanged(this.selected);
