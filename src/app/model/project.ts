@@ -1,8 +1,10 @@
+import { TodoTask } from "./todoTask";
+
 export class Project {
-    tasks:Task[] = [];
+    tasks:TodoTask[] = [];
     
     constructor(
-        public id:string,
+        public id:number,
         public title:string,
         public customer:string
     ) { }

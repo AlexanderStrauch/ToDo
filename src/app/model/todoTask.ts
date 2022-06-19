@@ -1,10 +1,10 @@
 import { Person } from "./person";
 
-export class Task {
+export class TodoTask {
     assignee!:Person;
 
     constructor(
-        public id:string,
+        public id:number,
         public title:string,
         public details:string,
         public completed:boolean,
