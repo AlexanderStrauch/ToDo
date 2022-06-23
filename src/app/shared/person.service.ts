@@ -20,9 +20,9 @@ export class PersonService {
   }
 
   private async createTestData() {
-    let p1 = new Person(1, "Alex", "Stuckenholz", "alexander.stuckenholz@hshl.de");
-    let p2 = new Person(2, "Max", "Mustermann", "max@hshl.de");
-    let p3 = new Person(3, "Kinga", "Karecki", "kinga@hshl.de");
+    let p1 = new Person(1, "Alexander", "Strauch", "alexander.strauch@stud.hshl.de");
+    let p2 = new Person(2, "Rolf", "Müller", "rolf@müller.de");
+    let p3 = new Person(3, "Mark", "Zuckerberg", "mark@meta.com");
     this.objects = [p1, p2, p3];
   }
 
@@ -33,6 +33,9 @@ export class PersonService {
   }
 
   async get(id:number):Promise<Person> {
+    console.log("Getting Person with ID" + id);
+    
+
     let index = this.objects.findIndex(x => x.id == id);
 
     if (index != -1) {
@@ -48,11 +51,17 @@ export class PersonService {
     if (index >= 0) {
       this.objects[index] = obj;
     } else {
-      let nextID = Math.max.apply(Math, this.objects.map(o => o.id))
+      let nextID = this.getNextId()
       obj.id = nextID
       this.objects.push(obj);
     }
 
     this.changed.emit();
+  }
+
+  getNextId():number{
+    let nextID = Math.max.apply(Math, this.objects.map(o => o.id)) + 1
+
+    return nextID
   }
 }

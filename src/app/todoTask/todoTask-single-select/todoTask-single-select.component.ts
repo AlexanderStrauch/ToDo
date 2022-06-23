@@ -1,31 +1,31 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Project } from 'src/app/model/project';
-import { ProjectService } from 'src/app/shared/project.service';
+import { TodoTask } from 'src/app/model/todoTask';
+import { TodoTaskService } from 'src/app/shared/todoTask.service';
 
 @Component({
-  selector: 'app-project-single-select',
-  templateUrl: './project-single-select.component.html',
-  styleUrls: ['./project-single-select.component.css'],
+  selector: 'app-todoTask-single-select',
+  templateUrl: './todoTask-single-select.component.html',
+  styleUrls: ['./todoTask-single-select.component.css'],
   providers: [
     {
        provide: NG_VALUE_ACCESSOR,
-       useExisting: forwardRef(() => ProjectSingleSelectComponent),
+       useExisting: forwardRef(() => TodoTaskSingleSelectComponent),
        multi: true
     }
  ]
 })
-export class ProjectSingleSelectComponent implements OnInit, ControlValueAccessor {
-  selected:Project = null;
-  all:Project[] = [];
+export class TodoTaskSingleSelectComponent implements OnInit, ControlValueAccessor {
+  selected:TodoTask = null;
+  all:TodoTask[] = [];
 
   onChanged: any = () => { };
   onTouched: any = () => { };
   disabled = false;
 
-  constructor(private service:ProjectService) { }
+  constructor(private service:TodoTaskService) { }
 
-  writeValue(element: Project): void {
+  writeValue(element: TodoTask): void {
     this.selected = element;
   }
 
@@ -45,7 +45,7 @@ export class ProjectSingleSelectComponent implements OnInit, ControlValueAccesso
     this.all = await this.service.getAll();
   }
 
-  isSelected(obj:Project):boolean {
+  isSelected(obj:TodoTask):boolean {
     return this.selected != null && obj.id == this.selected.id;
   }
 

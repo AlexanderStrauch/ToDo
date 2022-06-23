@@ -1,0 +1,4 @@
+<select  class="form-control form-select" aria-label="Select a task" id="todoTask" (change)="onSelectChanged($event)">
+  <option selected disabled>Please select a Task</option>
+  <option *ngFor="let obj of all" [selected]="isSelected(obj)" value="{{obj.id}}">{{obj.title}} {{obj.details}}</option>
+</select>

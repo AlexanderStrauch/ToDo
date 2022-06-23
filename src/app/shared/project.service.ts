@@ -48,11 +48,17 @@ export class ProjectService {
     if (index >= 0) {
       this.objects[index] = obj;
     } else {
-      let nextID = Math.max.apply(Math, this.objects.map(o => o.id))
+      let nextID = this.getNextId()
       obj.id = nextID
       this.objects.push(obj);
     }
 
     this.changed.emit();
+  }
+
+  getNextId():number{
+    let nextID = Math.max.apply(Math, this.objects.map(o => o.id)) + 1
+
+    return nextID
   }
 }

@@ -28,10 +28,10 @@ export class PersonEditComponent implements OnInit {
   async ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     
-    if (this.id != null) {
+    if (this.id != null && this.id != 0) {
       this.obj = await this.service.get(this.id);
     } else {
-      this.obj = new Person(null, "", "", "");
+      this.obj = new Person(this.service.getNextId(), "", "", "");
     }
 
     this.form.setValue({
@@ -46,6 +46,7 @@ export class PersonEditComponent implements OnInit {
       return;
     }
 
+    this.obj.id = this.service.getNextId()
     this.obj.firstname = this.form.controls.firstname.value;
     this.obj.lastname = this.form.controls.lastname.value;
     this.obj.email = this.form.controls.email.value;

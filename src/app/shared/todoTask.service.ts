@@ -21,16 +21,13 @@ export class TodoTaskService {
 
   private async createTestData() {
     let p1 = new TodoTask(1, "Fix performance issues", "In manchen Browsern lädt die Website extrem langsam", false, new Date());
-    let p2 = new TodoTask(2, "task2", "details2", false, new Date());
-    let p3 = new TodoTask(3, "task3", "details3", false, new Date());
-    let p4 = new TodoTask(4, "task4", "details4", false, new Date());
-    let p5 = new TodoTask(5, "task5", "details5", false, new Date());
-    let p6 = new TodoTask(6, "task6", "details6", false, new Date());
-    let p7 = new TodoTask(7, "task7", "details7", false, new Date());
-    let p8 = new TodoTask(8, "task8", "details8", false, new Date());
-    let p9 = new TodoTask(9, "task39", "details9", false, new Date());
+    let p2 = new TodoTask(2, "Fix CSS", "Get some colours", false, new Date());
+    let p3 = new TodoTask(3, "Find more bugs", "This is a detailed description", false, new Date());
+    let p4 = new TodoTask(4, "Fix more bugs", "This is also a detailed description", false, new Date());
+    let p5 = new TodoTask(5, "Code Review", "Need to review some code", false, new Date());
+    let p6 = new TodoTask(6, "Create new feature branch", "Currently everything is in master branch", false, new Date());
 
-    this.objects = [p1, p2, p3];
+    this.objects = [p1, p2, p3, p4, p5, p6];
   }
 
   async remove(obj:TodoTask):Promise<void> {
@@ -55,11 +52,17 @@ export class TodoTaskService {
     if (index >= 0) {
       this.objects[index] = obj;
     } else {
-      let nextID = Math.max.apply(Math, this.objects.map(o => o.id))
+      let nextID = this.getNextId()
       obj.id = nextID
       this.objects.push(obj);
     }
 
     this.changed.emit();
+  }
+
+  getNextId():number{
+    let nextID = Math.max.apply(Math, this.objects.map(o => o.id)) + 1
+
+    return nextID
   }
 }

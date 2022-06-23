@@ -1,0 +1,72 @@
+<button class="btn btn-primary btn-custom" 
+  (click)="onAdd()">Add</button>
+&nbsp;
+
+<button class="btn btn-success btn-custom" 
+  [disabled]="!isSelected()"
+  (click)="onEdit()">Edit</button>
+&nbsp;
+
+<button class="btn btn-danger btn-custom" 
+  [disabled]="!isSelected()"
+  (click)="onDelete()">Delete</button>
+
+<br>
+<br>
+
+<h2>Open Tasks</h2>
+<table class="table table-bordered">
+<thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Details</th>
+      <th scope="col">Completed</th>
+      <th scope="col">Creation Date</th>
+      <th scope="col">Completion Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of objectsOpen; index as i" 
+        (click)="onSelect(task)"
+        (dblclick)="onEdit()"
+        [class.table-info]="task == selected">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{task.title}}</td>
+        <td>{{task.details}}</td>
+        <td>{{task.completed}}</td>
+        <td>{{task.dateCreated}}</td>
+        <td>{{task.dateFinished}}</td>
+    </tr>
+  </tbody>
+  </table>
+  
+  <br>
+  <br>
+  
+  <h2>Completed tasks</h2>
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Details</th>
+          <th scope="col">Completed</th>
+          <th scope="col">Creation Date</th>
+          <th scope="col">Completion Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of objectsCompleted; index as i" 
+            (click)="onSelect(task)"
+            (dblclick)="onEdit()"
+            [class.table-info]="task == selected">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{task.title}}</td>
+            <td>{{task.details}}</td>
+            <td>{{task.completed}}</td>
+            <td>{{task.dateCreated}}</td>
+            <td>{{task.dateFinished}}</td>
+        </tr>
+      </tbody>
+      </table>

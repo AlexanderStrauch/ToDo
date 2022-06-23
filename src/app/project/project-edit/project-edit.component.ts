@@ -27,10 +27,10 @@ export class ProjectEditComponent implements OnInit {
   async ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     
-    if (this.id != null) {
+    if (this.id != null && this.id != 0) {
       this.obj = await this.service.get(this.id);
     } else {
-      this.obj = new Project(null, "", "");
+      this.obj = new Project(this.service.getNextId(), "", "");
     }
 
     this.form.setValue({
