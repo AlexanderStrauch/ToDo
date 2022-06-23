@@ -2,7 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Person } from '../../model/person';
-import { PersonService } from '../../shared/person.service';
+import { PersonService } from '../../services/person.service';
 
 @Component({
   selector: 'app-person-list',

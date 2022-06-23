@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TodoTask } from 'src/app/model/todoTask';
-import { TodoTaskService } from 'src/app/shared/todoTask.service';
+import { TodoTaskService } from 'src/app/services/todoTask.service';
 
 @Component({
   selector: 'app-todoTask-single-select',

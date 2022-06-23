@@ -11,9 +11,9 @@ import { PersonSingleSelectComponent } from './person/person-single-select/perso
 import { ProjectEditComponent } from './project/project-edit/project-edit.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 import { ProjectSingleSelectComponent } from './project/project-single-select/project-single-select.component';
-import { PersonService } from './shared/person.service';
-import { ProjectService } from './shared/project.service';
-import { TodoTaskService } from './shared/todoTask.service';
+import { PersonService } from './services/person.service';
+import { ProjectService } from './services/project.service';
+import { TodoTaskService } from './services/todoTask.service';
 import { TodoTaskEditComponent } from './todoTask/todoTask-edit/todoTask-edit.component';
 import { TodoTaskListComponent } from './todoTask/todoTask-list/todoTask-list.component';
 import { TodoTaskSingleSelectComponent } from './todoTask/todoTask-single-select/todoTask-single-select.component';

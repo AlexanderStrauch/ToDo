@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/model/project';
-import { ProjectService } from 'src/app/shared/project.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project-edit',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from 'src/app/model/person';
-import { PersonService } from 'src/app/shared/person.service';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-person-edit',

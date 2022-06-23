@@ -29,7 +29,7 @@ export class TodoTaskService {
     let persons = await this.personService.getAll();
     let projects = await this.projectService.getAll();
 
-    let p1 = new TodoTask(1, "Fix performance issues", "In manchen Browsern lädt die Website extrem langsam", false, new Date(2022, 0, 1, 10, 30), persons[0], projects[0]);
+    let p1 = new TodoTask(1, "Fix performance issues", "Long loading times", false, new Date(2022, 0, 1, 10, 30), persons[0], projects[0]);
     let p2 = new TodoTask(2, "Fix CSS", "Get some colours", false, new Date(2022, 0, 2, 11, 30), persons[0], projects[1]);
     let p3 = new TodoTask(3, "Find more bugs", "This is a detailed description", false, new Date(2022, 0, 3, 12, 30), persons[1], projects[2]);
     let p4 = new TodoTask(4, "Fix more bugs", "This is also a detailed description", true, new Date(2022, 0, 4, 13, 30), persons[1], projects[2]);

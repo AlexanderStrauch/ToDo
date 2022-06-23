@@ -2,7 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoTask } from 'src/app/model/todoTask';
-import { TodoTaskService } from 'src/app/shared/todoTask.service';
+import { TodoTaskService } from 'src/app/services/todoTask.service';
 
 @Component({
   selector: 'app-todoTask-list',

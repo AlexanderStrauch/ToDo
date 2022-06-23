@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Project } from 'src/app/model/project';
-import { ProjectService } from 'src/app/shared/project.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project-single-select',

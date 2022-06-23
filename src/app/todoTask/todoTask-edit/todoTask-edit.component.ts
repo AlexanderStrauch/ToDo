@@ -3,8 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from 'src/app/model/person';
 import { TodoTask } from 'src/app/model/todoTask';
-import { PersonService } from 'src/app/shared/person.service';
-import { TodoTaskService } from 'src/app/shared/todoTask.service';
+import { PersonService } from 'src/app/services/person.service';
+import { ProjectService } from 'src/app/services/project.service';
+import { TodoTaskService } from 'src/app/services/todoTask.service';
 
 @Component({
   selector: 'app-todoTask-edit',
@@ -21,7 +22,8 @@ export class TodoTaskEditComponent implements OnInit {
     private route:ActivatedRoute,
     private router:Router,
     private service:TodoTaskService,
-    private personService:PersonService) { 
+    private personService:PersonService,
+    private projectService:ProjectService) { 
       this.form = new FormGroup({
         title: new FormControl("", [Validators.required, Validators.minLength(3)]),
         details: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -63,6 +65,9 @@ export class TodoTaskEditComponent implements OnInit {
     }
     this.obj.asignee = this.form.controls.assignee.value;
     this.obj.project = this.form.controls.project.value;
+
+    this.obj.project.tasks.push(this.obj)
+    this.projectService.save(this.obj.project)
 
     if(this.obj.dateCreated == null){
       this.obj.dateCreated = new Date()

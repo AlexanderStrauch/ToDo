@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { Project } from '../model/project';
+import { TodoTaskService } from './todoTask.service';
 
 @Injectable({
   providedIn: 'root'

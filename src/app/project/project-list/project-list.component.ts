@@ -1,7 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from 'src/app/shared/project.service';
+import { ProjectService } from 'src/app/services/project.service';
 import { Project } from '../../model/project';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Person } from 'src/app/model/person';
-import { PersonService } from 'src/app/shared/person.service';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-person-single-select',
