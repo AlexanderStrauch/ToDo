@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'todoTask', component: TodoTaskListComponent },
   { path: 'todoTask/:id', component: TodoTaskEditComponent },
   
-  { path: '', redirectTo: 'person', pathMatch: 'full' },
+  { path: '', redirectTo: 'todoTask', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent } 
 ];
 

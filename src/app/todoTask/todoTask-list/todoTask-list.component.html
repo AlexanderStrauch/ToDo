@@ -21,9 +21,9 @@
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Details</th>
-      <th scope="col">Completed</th>
+      <th scope="col">Assigned to</th>
+      <th scope="col">Project</th>
       <th scope="col">Creation Date</th>
-      <th scope="col">Completion Date</th>
     </tr>
   </thead>
   <tbody>
@@ -34,9 +34,9 @@
         <th scope="row">{{i + 1}}</th>
         <td>{{task.title}}</td>
         <td>{{task.details}}</td>
-        <td>{{task.completed}}</td>
-        <td>{{task.dateCreated}}</td>
-        <td>{{task.dateFinished}}</td>
+        <td>{{task.asignee.firstname }} {{task.asignee.lastname}}</td>
+        <td>{{task.project.title}}</td>
+        <td>{{task.dateCreated | date:'dd.MM.yyyy HH:mm'}}</td>
     </tr>
   </tbody>
   </table>
@@ -51,7 +51,8 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
           <th scope="col">Details</th>
-          <th scope="col">Completed</th>
+          <th scope="col">Assigned to</th>
+          <th scope="col">Project</th>
           <th scope="col">Creation Date</th>
           <th scope="col">Completion Date</th>
         </tr>
@@ -64,9 +65,10 @@
             <th scope="row">{{i + 1}}</th>
             <td>{{task.title}}</td>
             <td>{{task.details}}</td>
-            <td>{{task.completed}}</td>
-            <td>{{task.dateCreated}}</td>
-            <td>{{task.dateFinished}}</td>
+            <td>{{task.asignee.firstname + " " + task.asignee.lastname}}</td>
+            <td>{{task.project.title}}</td>
+            <td>{{task.dateCreated | date:'dd.MM.yyyy HH:mm'}}</td>
+            <td>{{task.dateFinished | date:'dd.MM.yyyy HH:mm'}}</td>
         </tr>
       </tbody>
       </table>

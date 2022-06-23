@@ -34,7 +34,8 @@ export class PersonService {
 
   async get(id:number):Promise<Person> {
     console.log("Getting Person with ID" + id);
-    
+    if (this.objects == null)
+    await this.createTestData();
 
     let index = this.objects.findIndex(x => x.id == id);
 

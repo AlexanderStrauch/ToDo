@@ -14,6 +14,20 @@
       [ngClass]="{
         'is-invalid': form.controls.details.invalid && form.controls.details.dirty,
         'is-valid': form.controls.details.valid && form.controls.details.dirty}">
+    </div>    
+    <div class="form-group">
+      <label for="assignee">Asignee:</label>
+      <app-person-single-select formControlName="assignee"></app-person-single-select>
+      <span class="text-danger" *ngIf="form.controls.assignee.dirty && form.controls.assignee.invalid">
+        Task must be assigned to a person!
+      </span>
+    </div>    
+    <div class="form-group">
+      <label for="project">Project:</label>
+      <app-project-single-select formControlName="project"></app-project-single-select>
+      <span class="text-danger" *ngIf="form.controls.project.dirty && form.controls.project.invalid">
+        Task must be assigned to a project!
+      </span>
     </div>
     <div class="form-group">
       <label for="completed">Completed:</label>
