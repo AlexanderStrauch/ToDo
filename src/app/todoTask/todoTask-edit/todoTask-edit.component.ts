@@ -69,6 +69,9 @@ export class TodoTaskEditComponent implements OnInit {
     this.obj.project.tasks.push(this.obj)
     this.projectService.save(this.obj.project)
 
+    this.obj.asignee.tasks.push(this.obj)
+    this.personService.save(this.obj.asignee)
+
     if(this.obj.dateCreated == null){
       this.obj.dateCreated = new Date()
     }

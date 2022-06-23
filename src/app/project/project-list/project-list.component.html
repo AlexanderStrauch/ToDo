@@ -20,6 +20,7 @@
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Customer</th>
+      <th scope="col">Tasks Amount</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +31,7 @@
         <th scope="row">{{i + 1}}</th>
         <td>{{project.title}}</td>
         <td>{{project.customer}}</td>
+        <td>{{project.tasks.length}}</td>
     </tr>
   </tbody>
   </table>

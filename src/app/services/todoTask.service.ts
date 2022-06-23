@@ -37,6 +37,21 @@ export class TodoTaskService {
     let p5 = new TodoTask(5, "Code Review", "Need to review some code", false, new Date(2022, 0, 5, 14, 30), persons[2], projects[1]);
     let p6 = new TodoTask(6, "Create new feature branch", "Currently everything is in master branch", false, new Date(2022, 0, 6, 15, 30), persons[2], projects[0]);
 
+    this.projectService.addTaskToProjet(projects[0], p1)
+    this.projectService.addTaskToProjet(projects[1], p2)
+    this.projectService.addTaskToProjet(projects[2], p3)
+    this.projectService.addTaskToProjet(projects[2], p4)
+    this.projectService.addTaskToProjet(projects[1], p5)
+    this.projectService.addTaskToProjet(projects[0], p6)
+
+    this.personService.assignTaskToPerson(persons[0], p1)
+    this.personService.assignTaskToPerson(persons[0], p2)
+    this.personService.assignTaskToPerson(persons[1], p3)
+    this.personService.assignTaskToPerson(persons[1], p4)
+    this.personService.assignTaskToPerson(persons[2], p5)
+    this.personService.assignTaskToPerson(persons[2], p6)
+
+
     this.objects = [p1, p2, p3, p4, p5, p6];
   }
 

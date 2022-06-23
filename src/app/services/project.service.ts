@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { Project } from '../model/project';
+import { TodoTask } from '../model/todoTask';
 import { TodoTaskService } from './todoTask.service';
 
 @Injectable({
@@ -56,6 +57,21 @@ export class ProjectService {
 
     this.changed.emit();
   }
+
+  async addTaskToProjet(project:Project, task: TodoTask):Promise<void>{
+    let prj = this.objects.find(x => x.id == project.id)
+    prj.tasks.push(task)
+
+    this.save(prj)
+  }
+
+  async removeTaskFromProject(project:Project, task: TodoTask):Promise<void>{
+    let prj = this.objects.find(x => x.id == project.id)
+    prj.tasks.splice(task.id, 1)
+
+    this.save(prj)
+  }
+
 
   getNextId():number{
     let nextID = Math.max.apply(Math, this.objects.map(o => o.id)) + 1

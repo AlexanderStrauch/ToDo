@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Person } from '../model/person';
 import { Output, EventEmitter } from '@angular/core';
+import { TodoTask } from '../model/todoTask';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,6 @@ export class PersonService {
   }
 
   async get(id:number):Promise<Person> {
-    console.log("Getting Person with ID" + id);
     if (this.objects == null)
     await this.createTestData();
 
@@ -58,6 +58,20 @@ export class PersonService {
     }
 
     this.changed.emit();
+  }
+
+  async assignTaskToPerson(person:Person, task:TodoTask):Promise<void>{
+    let prs = this.objects.find(x => x.id == person.id)
+    prs.tasks.push(task)
+
+    this.save(prs)
+  }
+
+  async removeTaskFromPerson(person:Person, task: TodoTask):Promise<void>{
+    let prs = this.objects.find(x => x.id == person.id)
+    prs.tasks.splice(task.id, 1)
+
+    this.save(prs)
   }
 
   getNextId():number{

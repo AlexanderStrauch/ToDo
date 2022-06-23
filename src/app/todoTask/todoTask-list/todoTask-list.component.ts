@@ -2,6 +2,8 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TodoTask } from 'src/app/model/todoTask';
+import { PersonService } from 'src/app/services/person.service';
+import { ProjectService } from 'src/app/services/project.service';
 import { TodoTaskService } from 'src/app/services/todoTask.service';
 
 @Component({
@@ -17,6 +19,8 @@ export class TodoTaskListComponent implements OnInit {
 
   constructor(
     private service:TodoTaskService,
+    private personService:PersonService,
+    private projectService:ProjectService,
     private router:Router) { }
 
   async ngOnInit() {
@@ -39,9 +43,15 @@ export class TodoTaskListComponent implements OnInit {
     return this.selected != null;
   }
 
-  onDelete() {
+  async onDelete() {
     if (!this.isSelected())
       return;
+    
+    let person = await  this.personService.get(this.selected.asignee.id)
+    await this.personService.removeTaskFromPerson(person, this.selected)
+
+    let project = await this.projectService.get(this.selected.project.id)
+    this.projectService.removeTaskFromProject(project, this.selected)
     
     this.service.remove(this.selected);
     this.selected = null;
